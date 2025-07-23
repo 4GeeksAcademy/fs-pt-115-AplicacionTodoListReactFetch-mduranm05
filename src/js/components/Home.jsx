@@ -8,7 +8,7 @@ export const TodoList = () => {
   const [input, setInput] = useState("");
   const [tareas, setTareas] = useState([]);
 
-  const USERNAME = "michael"; 
+  const USERNAME = "michael";
 
   const getTareas = async () => {
     const response = await fetch(`https://playground.4geeks.com/todo/users/${USERNAME}`);
@@ -63,7 +63,7 @@ export const TodoList = () => {
     <div className="container mt-5">
       <div className="card shadow">
         <div className="card-body">
-          <h2 className="text-center mb-4">📝 Lista de Tareas</h2>
+          <h2 className="text-center mb-4"> Lista de Tareas</h2>
 
           <div className="input-group mb-3">
             <input
@@ -97,7 +97,7 @@ export const TodoList = () => {
                     className="btn btn-outline-danger btn-sm"
                     onClick={() => eliminarTarea(tarea.id)}
                   >
-                    ❌
+                    X
                   </button>
                 </li>
               ))
