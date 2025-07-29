@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ListaTarea } from "./ListaTarea";
+import { useEffect, useState } from "react";
+import { ListaTarea } from "./ListaTarea"
 
 export const Home = () => {
 
@@ -40,11 +40,38 @@ export const Home = () => {
     setInputValue("")
   }
 
+  const eliminarTarea = async(id) => {
+    const respuesta = await fetch(`https://playground.4geeks.com/todo/todos/${id}`,{
+      method: "DELETE"
+    })
+    getTareas()
+  }
+
+  const handleKeyUp = (e) =>{
+    if (e.key === "Enter" && inputValue.trim() !=="") {
+      crearTarea()
+    }
+  }  
+
+
+  useEffect(()=>{
+    getTareas()
+  },[])
+
 
 
 
 
   return (
-
+    <> 
+      <input 
+        type="text" 
+        placeholder="escribir tarea"
+        value={inputValue}
+        onChange={(e)=>setInputValue(e.target.value)}
+        onKeyUp={handleKeyUp}
+      />
+      <ListaTarea tareas={tareas} eliminarTarea={eliminarTarea}/>
+    </>
   )
 }

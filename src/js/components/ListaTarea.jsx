@@ -1,6 +1,6 @@
-import { renderToNodeStream } from "react-dom/server"
 
-export const ListaTarea = () => {
+
+export const ListaTarea = ({tareas, eliminarTarea}) => {
     return (
         <ul className="list-group">
             {tareas.length === 0 ? (
@@ -8,13 +8,13 @@ export const ListaTarea = () => {
                     no hay tareas por hacer
                 </li>
             ) : (
-                tareas.map((tarea, index) => (
-                    <li key={index}
+                tareas.map((tarea) => (
+                    <li key={tarea.id}
                     className="list-group-item d-flex justify-content-between align-items-center">
                         <span>
                             {tarea.label}
                         </span>
-                        <button className="btn btn-danger">X</button>
+                        <button className="btn btn-danger" onClick={()=> eliminarTarea(tarea.id)}>X</button>
                     </li>
                 ))
             )}
