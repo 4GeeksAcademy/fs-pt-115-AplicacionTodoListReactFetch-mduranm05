@@ -63,7 +63,9 @@ export const Home = () => {
 
 
   return (
-    <> 
+    <div className="container text-center mt-5">
+
+    
       <input 
         type="text" 
         placeholder="escribir tarea"
@@ -72,6 +74,6 @@ export const Home = () => {
         onKeyUp={handleKeyUp}
       />
       <ListaTarea tareas={tareas} eliminarTarea={eliminarTarea}/>
-    </>
+    </div> 
   )
 }
